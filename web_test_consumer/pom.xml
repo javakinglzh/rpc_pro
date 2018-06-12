@@ -67,6 +67,12 @@
 			<artifactId>spring-context-support</artifactId>
 			<version>4.3.3.RELEASE</version>
 		</dependency>
+		<!-- test interface -->
+		<dependency>
+			<groupId>privates.lzh.rpc</groupId>
+			<artifactId>test_interface</artifactId>
+			<version>1.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
