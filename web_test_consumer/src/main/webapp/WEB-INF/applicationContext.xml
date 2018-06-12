@@ -25,4 +25,7 @@
 	Note that, with Spring 3.0, this tag works in Servlet MVC only!  -->
 	<mvc:annotation-driven /> 
 	<aop:aspectj-autoproxy />
+	<bean id="consumerRPCManager"  class="privates.lzh.rpc.core.consumer.ConsumerRPCManager">
+		<property name="scanPack" value="privates.lzh.rpc.api" />
+	</bean>
 </beans>
