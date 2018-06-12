@@ -3,7 +3,7 @@ package privates.lzh.rpc.web.consumer.common;
 public class ServerResponse<D>
 {
     // 返回码 0成功, 默认成功
-    private String id = "0";
+    private int id;
     
     // 描述
     private String desc;
@@ -11,11 +11,11 @@ public class ServerResponse<D>
     // 返回数据
     private D data;
     
-    public String getId() {
+    public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
