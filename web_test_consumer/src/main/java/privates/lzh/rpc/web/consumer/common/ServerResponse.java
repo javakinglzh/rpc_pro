@@ -1,4 +1,4 @@
-package privates.lzh.rpc.web.consumer.controller;
+package privates.lzh.rpc.web.consumer.common;
 
 public class ServerResponse<D>
 {
