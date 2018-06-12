@@ -11,8 +11,8 @@
 		http://www.springframework.org/schema/aop 
         http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
 	
-	<resources location="/html/" mapping="/html/**"/>
 	<resources location="/view/" mapping="/**/*.html"/>
+	<resources location="/view/" mapping="/**/*.js" />
 	<resources location="/WEB-INF/views/" mapping="/**/*.json"/>
 
     <beans:bean

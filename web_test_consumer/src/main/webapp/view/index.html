@@ -5,8 +5,21 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>test_web_consumer</title>
-    <script src="import/jquery/jquery.min.js"></script>
+    <script src="js/jquery-1.7.1.min.js"></script>
 </head>
 <body>
-	test_web_consumer
+	<button id="button1" type="button">invoke producer's method by rpc!</button>
+	<script>
+	$("#button1").click(function() {
+	    $.ajax({
+	        type: "POST",
+	        url: "rpctest",
+	        contentType: "application/json; charset=utf-8",
+	        success: function (message) {
+	          	alert(message.desc)  
+	        }
+	    });
+	});
+	</script>
+	
 </body>
