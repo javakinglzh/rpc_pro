@@ -17,7 +17,7 @@ import privates.lzh.rpc.web.consumer.common.ServerResponse;
 public class WebConsumerController
 {
     /**
-     * invoke rpc test
+     * invoke RPC test
      */
 	@Autowired
 	IUserService userServie;
@@ -25,11 +25,13 @@ public class WebConsumerController
     @ResponseBody     
     public ServerResponse<String> rpcTest()
     {
-    	System.out.println("this is web_test_consumer");
+    	System.out.println("...web consumer controller...");
+    	
     	UserInfo info = new UserInfo();
     	info.setAge(10);
     	info.setName("lzh");
     	int result = userServie.addUser(info);
+    	
     	String desc = result==0 ? "add Success": "add fail";
     	ServerResponse<String> res = new ServerResponse<String>();
     	res.setDesc(desc);
