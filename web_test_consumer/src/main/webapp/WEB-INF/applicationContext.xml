@@ -15,7 +15,7 @@
             http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
 			
 	<!-- Activates various annotations to be detected in bean classes -->
-	<!-- <context:annotation-config /> -->
+	<!--<context:annotation-config />-->
 
 	<!-- Scans the classpath for annotated components that will be auto-registered as Spring beans.
 	 For example @Controller and @Service. Make sure to set the correct base-package -->
@@ -23,9 +23,13 @@
 
 	<!-- Configures the annotation-driven Spring MVC Controller programming model.
 	Note that, with Spring 3.0, this tag works in Servlet MVC only!  -->
+	<bean id="consumerRPCManager" class="privates.lzh.rpc.core.consumer.ConsumerRPCManager">
+		<property name="rpcServices">
+            <map>
+                <entry key="userServie" value="privates.lzh.rpc.api.service.IUserService"></entry>
+            </map>
+        </property>
+	</bean>	
 	<mvc:annotation-driven /> 
 	<aop:aspectj-autoproxy />
-	<bean id="consumerRPCManager"  class="privates.lzh.rpc.core.consumer.ConsumerRPCManager">
-		<property name="scanPack" value="privates.lzh.rpc.api" />
-	</bean>
 </beans>
