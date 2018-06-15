@@ -4,8 +4,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import javax.imageio.spi.RegisterableService;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
@@ -20,9 +20,9 @@ import org.springframework.beans.factory.support.RootBeanDefinition;
  */
 public class ConsumerRPCManager implements BeanDefinitionRegistryPostProcessor 
 {
-	// RPC interface package to be scanned
-	private String scanPack;
+	private final Logger log = LoggerFactory.getLogger(ConsumerRPCManager.class);
 	private Map<String, String> rpcServices;
+	
 	public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException 
 	{
 		
@@ -30,7 +30,7 @@ public class ConsumerRPCManager implements BeanDefinitionRegistryPostProcessor
 
 	public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException 
 	{
-		System.out.println("....register start....");
+		log.debug("....register consumer interface as BeanDefinition start....");
 		
 		Set<Entry<String, String>> entrySet = rpcServices.entrySet();
 		for(Entry<String, String> entry:entrySet)
@@ -46,14 +46,14 @@ public class ConsumerRPCManager implements BeanDefinitionRegistryPostProcessor
 				definition.setScope(BeanDefinition.SCOPE_SINGLETON);
 				definition.getPropertyValues().addPropertyValue("clazz", clazz);
 				registry.registerBeanDefinition(name, definition);
-				System.out.println("....register class : " + clazz);
+				log.debug("....register class : " + clazz);
 			} catch (ClassNotFoundException e) 
 			{
 				e.printStackTrace();
 			}
 		}
 		
-		System.out.println("....register end....");
+		System.out.println("....register consumer interface as BeanDefinition end....");
 	}
 	
 	public Map<String, String> getRpcServices() 
@@ -64,15 +64,5 @@ public class ConsumerRPCManager implements BeanDefinitionRegistryPostProcessor
 	public void setRpcServices(Map<String, String> rpcServices) 
 	{
 		this.rpcServices = rpcServices;
-	}
-
-	public String getScanPack() 
-	{
-		return scanPack;
-	}
-
-	public void setScanPack(String scanPack) 
-	{
-		this.scanPack = scanPack;
 	}
 }
