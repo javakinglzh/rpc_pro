@@ -65,4 +65,14 @@ public class ConsumerRPCManager implements BeanDefinitionRegistryPostProcessor
 	{
 		this.rpcServices = rpcServices;
 	}
+	/**
+	 * judge the given clazz is a RPC interface
+	 * @param clazz
+	 * @return true RPC interface
+	 */
+	private boolean isRPCInterface(Class clazz)
+	{
+		if(clazz.isInterface()&&clazz.getAnnotation(annotationClass))
+		return true;
+	}
 }
