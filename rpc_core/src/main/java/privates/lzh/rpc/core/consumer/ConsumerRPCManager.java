@@ -49,11 +49,11 @@ public class ConsumerRPCManager implements BeanDefinitionRegistryPostProcessor
 				log.debug("....register class : " + clazz);
 			} catch (ClassNotFoundException e) 
 			{
-				e.printStackTrace();
+				log.error("load class error", e);
 			}
 		}
 		
-		System.out.println("....register consumer interface as BeanDefinition end....");
+		log.debug("....register consumer interface as BeanDefinition end....");
 	}
 	
 	public Map<String, String> getRpcServices() 
@@ -64,15 +64,5 @@ public class ConsumerRPCManager implements BeanDefinitionRegistryPostProcessor
 	public void setRpcServices(Map<String, String> rpcServices) 
 	{
 		this.rpcServices = rpcServices;
-	}
-	/**
-	 * judge the given clazz is a RPC interface
-	 * @param clazz
-	 * @return true RPC interface
-	 */
-	private boolean isRPCInterface(Class clazz)
-	{
-		if(clazz.isInterface()&&clazz.getAnnotation(annotationClass))
-		return true;
 	}
 }
